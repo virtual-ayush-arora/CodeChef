@@ -1,0 +1,49 @@
+1832. Check if the Sentence Is Pangram
+Easy
+Topics
+Companies
+
+A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+
+First Approach
+
+bool checkIfPangram(std :: string s) {
+        bool arr[26] = {false};
+        int len = s.length();
+        for(int i=0;i<len;i++)
+        {
+            //Value should be between 97 to 122
+            int temp = (int(s[i]))%97;
+            if(temp<26)
+            {
+                if(arr[temp] == false)
+                {
+                    arr[temp] = true;
+                }
+            }
+        }
+        for(int i=0;i<26;i++){
+            if(arr[i] == false){
+                return false;
+            }
+        }    return true;
+        
+    }
+
+Second Approach
+
+bool checkIfPangram(std :: string s) {
+        std::set<char> alphabets;
+        for(int i=0;i<s.length();i++)
+        {
+           alphabets.insert(s[i]); 
+        }
+        if(alphabets.size() == 26)
+        {
+            return true;
+        }
+        return false;
+        
+    }
